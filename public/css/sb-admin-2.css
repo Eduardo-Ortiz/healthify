@@ -164,6 +164,38 @@ body,html {
   animation: fade .5s linear;
 }
 
+.btn-success {
+  color: #fff;
+  background-color: #3dc69e;
+  border-color: #1EB587;
+}
+
+.btn-success:hover {
+  color: #fff;
+  background-color: #1db592;
+  border-color: #019C6D;
+  border-top-color: rgb(1, 156, 109);
+  border-right-color: rgb(1, 156, 109);
+  border-bottom-color: rgb(1, 156, 109);
+  border-left-color: rgb(1, 156, 109);
+}
+
+.btn-success.focus, .btn-success:focus,.btn-success:active {
+  color: #fff;
+  background-color: #1db592;
+  border-color: #019C6D;
+}
+
+.btn-success:active:hover{
+  color: #fff;
+  background-color: #019C6D;
+  border-color: #019C6D;
+  border-top-color: rgb(0, 109, 76);
+  border-right-color: rgb(0, 109, 76);
+  border-bottom-color: rgb(0, 109, 76);
+  border-left-color: rgb(0, 109, 76);
+}
+
 .well-fix{
   margin-top: -15px;
   margin-left: -12px;
@@ -208,6 +240,8 @@ body,html {
   0%   { border-color: rgba(61, 198, 158, 0); }
   100% { border-color: rgba(61, 198, 158, 1); }
 }
+
+
 
 @keyframes spin {
   0% {transform:rotate(0deg);}
