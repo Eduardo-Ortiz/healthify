@@ -10,14 +10,18 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+        <!-- Custom Fonts -->
+        <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.min.css') }}" />
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}" />
+
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
+                background-image: url("/healthify/public/images/background_2.jpg");
+                background-repeat: repeat;
+
                 margin: 0;
             }
 
@@ -49,15 +53,7 @@
                 font-size: 84px;
             }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+
 
             .m-b-md {
                 margin-bottom: 30px;
@@ -66,28 +62,25 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div style="text-align: center">
+                        <img src="/healthify/public/images/logo.png" alt="">
+                    </div>
+                    <br>
+                    <div>
+                         <span style="font-size: 20px;color:#000000">
+                         Bienvenido a Healthify, para continuar selecciona una de las siguientes opciones:
+                    </span>
+                    </div>
+                    <hr>
+                    <div style="text-align: center">
+                        <a href="{{route('register')}}" type="submit" class="btn btn-default btn-lg"><i class="fa fa-user-plus fa-fw"></i> Registro Pacientes</a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="{{route('login')}}" type="submit" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> Ingresar al Sistema</a>
+                    </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
         </div>

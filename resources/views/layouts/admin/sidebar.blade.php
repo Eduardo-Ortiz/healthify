@@ -45,10 +45,16 @@
                 <a href="#"><i class="fa fa-toggle-off fa-fw"></i> Medicamentos<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{url('admin/admins')}}">Explorar</a>
+                        <a href="{{url('admin/medicines')}}">Explorar</a>
                     </li>
                     <li>
-                        <a href="{{url('admin/admins/create')}}">Registrar</a>
+                        <a href="{{url('admin/medicines/create')}}">Registrar</a>
+                    </li>
+                    <li>
+                        <a href="{{url('admin/medicines/purposes')}}">Usos</a>
+                    </li>
+                    <li>
+                        <a href="{{url('admin/medicines/presentations')}}">Presentaciones</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

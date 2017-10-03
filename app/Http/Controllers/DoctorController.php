@@ -72,6 +72,8 @@ class DoctorController extends Controller
 
         $user->doctor()->save($doctor);
 
+        session()->flash('status', 'Doctor '. $doctor->name .' creado correctamente!');
+
         return redirect('/admin/doctors');
     }
 
@@ -146,8 +148,21 @@ class DoctorController extends Controller
      * @param  \App\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Doctor $doctor)
+    public function destroy(User $doctor)
     {
         //
+        session()->flash('status', 'Doctor '. $doctor->name .' eliminado correctamente!');
+
+        $doctor->delete();
+
+        return redirect('/admin/doctors');
+    }
+
+    public function getFromSpeciality(Request $request)
+    {
+
+        $speciality_id = $request->get('speciality_id');
+        return Doctor::where('especialidad','=',$speciality_id)
+            ->get();
     }
 }

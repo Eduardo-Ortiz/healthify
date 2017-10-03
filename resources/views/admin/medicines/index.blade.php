@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header"><strong>Doctores</strong></h1>
+            <h1 class="page-header"><strong>Medicinas</strong></h1>
 
             @if(session()->has('status'))
                 <div class="alert alert-success fade in alert-dismissable">
@@ -16,29 +16,33 @@
             @endif
 
 
-            @if(count($doctors))
+            @if(count($medicines))
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
                         <th>N°</th>
                         <th>Nombre</th>
-                        <th>Especialidad</th>
+                        <th>Existencia</th>
+                        <th>Presentación</th>
+                        <th>Uso</th>
                         <th>Editar</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($doctors as $doctor)
+                    @foreach($medicines as $medicine)
                         <tr>
-                            <td>{{$doctor->doctor->id}}</td>
-                            <td>{{$doctor->doctor->nombre}} {{$doctor->doctor->apellido_paterno}} {{$doctor->doctor->apellido_materno}}</td>
-                            <td>{{$doctor->doctor->speciality->nombre}}</td>
-                            <td style="width: 1px"><a href="{{route('admin.doctors.edit', $doctor->id)}}" class="btn btn-default btn-xs">Seleccionar</a></td>
+                            <td>{{$medicine->id}}</td>
+                            <td>{{$medicine->name}}</td>
+                            <td>{{$medicine->existence}}</td>
+                            <td>{{$medicine->presentation->name}}</td>
+                            <td>{{$medicine->purpose->name}}</td>
+                            <td style="width: 1px"><a href="{{route('admin.medicines.edit', $medicine->id)}}" class="btn btn-default btn-xs">Seleccionar</a></td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
             @else
-                <h4>No hay ningún doctor registrado. Visite la <strong><a href="{{url('admin/doctors/create')}}">Pagina de Registro</a></strong> para agregar datos.</h4>
+                <h4>No hay ninguna medicina registrada. Visite la <strong><a href="{{url('admin/medicines/create')}}">Pagina de Creación</a></strong> para agregar medicinas.</h4>
             @endif
         </div>
 

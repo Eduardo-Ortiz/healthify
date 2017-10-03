@@ -71,7 +71,6 @@
 
                 <div class="row">
                     <div class="col-xs-4 col-sm-4 col-md-4">
-
                         <label for="Foto">Elegir Fotografía:</label>
                         <!-- image-preview-filename input [CUT FROM HERE]-->
                         <div class="input-group image-preview">

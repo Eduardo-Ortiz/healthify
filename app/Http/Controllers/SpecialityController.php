@@ -82,4 +82,11 @@ class SpecialityController extends Controller
     {
         //
     }
+
+    public function getAll()
+    {
+        //
+        return Speciality::all();
+
+    }
 }
