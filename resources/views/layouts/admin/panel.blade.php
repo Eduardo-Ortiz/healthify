@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Suffragium - Administrador</title>
+    <title>Healthify - Administrador</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('favicon.ico') }}" >
 

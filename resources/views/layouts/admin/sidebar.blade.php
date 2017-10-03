@@ -8,10 +8,10 @@
                 <a href="#"><i class="fa fa-user-md fa-fw"></i> Medicos<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{url('admin/admins')}}">Explorar</a>
+                        <a href="{{url('admin/doctors')}}">Explorar</a>
                     </li>
                     <li>
-                        <a href="{{url('admin/admins/create')}}">Registrar</a>
+                        <a href="{{url('admin/doctors/create')}}">Registrar</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
