@@ -103,21 +103,33 @@
             <h1>Panel de Doctor</h1>
             <hr>
             <div class="col-xs-8 col-sm-8 col-md-8">
-                <div class="well" style="text-align: center">
+                <div class="well" style="text-align: center;">
                     <h4>Cita Actual</h4>
-                    @if(count($appointment))
+                    @if(!empty ( $appointment ))
+                        <div style="text-align: left">
 
+
+                        Paciente: {{$appointment->patient->patient->nombre}} {{$appointment->patient->patient->apellido_paterno}} {{$appointment->patient->patient->apellido_materno}}<br>
+                        Fecha : {{$appointment->appointment_date}}   Hora : {{$appointment->getTextHour()}}<br>
+                         <br>
+                            <div style="text-align: center">
+                                <a href="{{route('doctor.appointment.show',$appointment->id)}}" type="submit" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> Iniciar</a>
+                            </div>
+
+                        </div>
                     @else
                         No hay una cita programada para esta hora.
                     @endif
-
-
-                    <a href="{{route('patient.appointment.create')}}" type="submit" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> Iniciar</a>
                 </div>
             </div>
 
             <div class="col-xs-4 col-sm-4 col-md-4">
                 <h4>Proximas Citas</h4>
+                <ul class="list-group" style="font-size: 11px;text-align: left">
+                    <li class="list-group-item">First item</li>
+                    <li class="list-group-item">Second item</li>
+                    <li class="list-group-item">Third item</li>
+                </ul>
             </div>
 
 

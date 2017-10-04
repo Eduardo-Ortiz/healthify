@@ -166,4 +166,33 @@ class MedicineController extends Controller
 
         return redirect('/admin/medicines/presentations');
     }
+
+
+    public function search(Request $request)
+    {
+        $input = $request->get('input');
+
+        if($input=="")
+            return null;
+        else
+            return Medicine::where('medicines.name', 'LIKE', $input.'%')
+                ->join('presentations','medicines.presentation_id','=','presentations.id')
+                ->select('medicines.*', 'presentations.name as presentation_name')
+                ->get();
+    }
+
+
+    public function data(Request $request)
+    {
+        $input = $request->get('medicine');
+
+        if($input=="")
+            return null;
+        else
+            return Medicine::where('medicines.id', '=', $input)
+                ->join('presentations','medicines.presentation_id','=','presentations.id')
+                ->join('purposes','medicines.purpose_id','=','purposes.id')
+                ->select('medicines.*', 'presentations.name as presentation_name','purposes.name as purpose_name')
+                ->first();
+    }
 }

@@ -25,6 +25,8 @@ Route::get('/patient', function () {
 
 Route::get('/doctor','DoctorController@mainPanel')->middleware('doctor')->name('doctor');
 
+Route::get('/doctor/appointment/{appointment}','DoctorController@showAppointment')->middleware('doctor')->name('doctor.appointment.show');
+
 Route::get('patient/appointment/create', function () {
     return view('patient.appointments.create');
 })->name('patient.appointment.create')->middleware('patient');
@@ -66,6 +68,10 @@ Route::post('login', 'LoginUserController@login')->name('login');
 Route::get('ajax/specialities', 'SpecialityController@getAll');
 
 Route::post('ajax/doctors', 'DoctorController@getFromSpeciality');
+
+Route::post('ajax/medicines', 'MedicineController@search');
+
+Route::post('ajax/medicinesdata', 'MedicineController@data');
 
 Route::post('ajax/appointment/hours', 'AppointmentController@getUsedHours');
 
