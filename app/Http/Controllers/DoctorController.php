@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Appointment;
 use App\Doctor;
 use App\Speciality;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorController extends Controller
 {
@@ -164,5 +167,66 @@ class DoctorController extends Controller
         $speciality_id = $request->get('speciality_id');
         return Doctor::where('especialidad','=',$speciality_id)
             ->get();
+    }
+
+    public function mainPanel(){
+        $carbon = new Carbon();
+        $date = substr($carbon, 0,-9);
+
+        $time=$carbon->format('H:i');
+
+        if ($time >= "17:00" || $time <= "18:00") {
+            return "funciona";
+        }
+
+        return $time;
+
+
+        $dayAppointments = Appointment::where('appointment_date','=',$date)
+            ->where('doctor','=',Auth::user()->id)
+            ->get();
+
+
+
+
+        return view('doctors.index',compact('appointment'));
+    }
+
+    private static function hourToInt($hour)
+    {
+        if ($hour >= "8:00" || $hour <= "9:00") {
+            return 1;
+        }
+        else if ($hour >= "9:00" || $hour <= "10:00") {
+            return 2;
+        }
+        else if ($hour >= "10:00" || $hour <= "11:00") {
+            return 3;
+        }
+        else if ($hour >= "11:00" || $hour <= "12:00") {
+            return 4;
+        }
+        else if ($hour >= "12:00" || $hour <= "13:00") {
+            return 5;
+        }
+        else if ($hour >= "15:00" || $hour <= "16:00") {
+            return 6;
+        }
+        else if ($hour >= "16:00" || $hour <= "17:00") {
+            return 7;
+        }
+        else if ($hour >= "17:00" || $hour <= "18:00") {
+            return 8;
+        }
+        else if ($hour >= "18:00" || $hour <= "19:00") {
+            return 9;
+        }
+        else if ($hour >= "19:00" || $hour <= "20:00") {
+            return 9;
+        }
+        else {
+            return 0;
+        }
+
     }
 }

@@ -20,7 +20,9 @@ class AppointmentController extends Controller
 
 
         $patient = Auth::user()->id;
-        $appointments=Appointment::all()->where('expedient','=',$patient);
+        $appointments=Appointment::all()
+            ->where('expedient','=',$patient)
+            ->where('status',0);
 
         return view('patient.appointments.index',compact('appointments'));
     }

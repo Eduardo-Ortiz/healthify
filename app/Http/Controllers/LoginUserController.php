@@ -24,6 +24,10 @@ class LoginUserController extends Controller
             {
                 return redirect('/admin');
             }
+            else if($user->role_id==2)
+            {
+                return redirect('/doctor');
+            }
 
 
         }else{

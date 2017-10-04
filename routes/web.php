@@ -23,6 +23,8 @@ Route::get('/patient', function () {
     return view('patient.index');
 })->middleware('patient')->name('patient');
 
+Route::get('/doctor','DoctorController@mainPanel')->middleware('doctor')->name('doctor');
+
 Route::get('patient/appointment/create', function () {
     return view('patient.appointments.create');
 })->name('patient.appointment.create')->middleware('patient');
