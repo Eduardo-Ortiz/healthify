@@ -126,9 +126,22 @@
             <div class="col-xs-4 col-sm-4 col-md-4">
                 <h4>Proximas Citas</h4>
                 <ul class="list-group" style="font-size: 11px;text-align: left">
-                    <li class="list-group-item">First item</li>
-                    <li class="list-group-item">Second item</li>
-                    <li class="list-group-item">Third item</li>
+                    @if(count($nextAppointment))
+
+                        @foreach($nextAppointment as $next)
+                            <li class="list-group-item">
+                                Paciente: {{$next->patient->patient->nombre}} {{$next->patient->patient->apellido_paterno}} {{$nextAppointment->patient->patient->apellido_materno}}<br>
+                                Fecha : {{$next->appointment_date}}   Hora : {{$next->getTextHour()}}<br>
+                            </li>
+
+                        @endforeach
+
+
+                    @else
+                        <li class="list-group-item">No hay citas mas tarde.</li>
+                    @endif
+
+
                 </ul>
             </div>
 

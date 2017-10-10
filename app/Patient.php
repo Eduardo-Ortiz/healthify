@@ -16,4 +16,8 @@ class Patient extends Model
     protected $fillable = [
         'ruta_foto','nombre','apellido_paterno','apellido_materno', 'sexo', 'edad'
     ];
+
+    public function appointments(){
+        return $this->hasMany('App\Appointment','expedient', 'user_id');
+    }
 }

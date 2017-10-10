@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Appointment;
 use App\Patient;
+use App\Recipe;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -124,4 +126,37 @@ class PatientController extends Controller
 
         return redirect('/patient');
     }
+
+    public function recipes()
+    {
+
+        $patient = Auth::user()->id;
+        $appointments=Appointment::all()
+            ->where('expedient','=',$patient)
+            ->where('status',1);
+
+
+        return view('patient.recipes.index',compact('appointments'));
+
+    }
+
+    public function data()
+    {
+
+        $patient = Auth::user()->id;
+        $appointments=Appointment::all()
+            ->where('expedient','=',$patient)
+            ->where('status',1);
+
+
+        return view('patient.data',compact('appointments'));
+
+    }
+
+    public function getList()
+    {
+        $patients = User::all()->where('role_id','=','3');
+        return view('admin.patients.index',compact('patients'));
+    }
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Medicine;
 use App\Presentation;
 use App\Purposes;
+use App\Recipe;
 use Illuminate\Http\Request;
 
 class MedicineController extends Controller
@@ -194,5 +195,27 @@ class MedicineController extends Controller
                 ->join('purposes','medicines.purpose_id','=','purposes.id')
                 ->select('medicines.*', 'presentations.name as presentation_name','purposes.name as purpose_name')
                 ->first();
+    }
+
+    public function searchAlternatives(Request $request)
+    {
+        $purpose = $request->get('prupose');
+        $quantity = $request->get('quantity');
+
+
+            return Medicine::join('presentations','medicines.presentation_id','=','presentations.id')
+                ->join('purposes','medicines.purpose_id','=','purposes.id')
+                ->select('medicines.*', 'presentations.name as presentation_name')
+                ->where('purposes.id', '=', $purpose)
+                ->where('medicines.existence', '>=', $quantity)
+                ->get();
+    }
+
+
+    public function registry()
+    {
+        $recipes = Recipe::all();
+
+        return view('admin.medicines.registry',compact('recipes'));
     }
 }

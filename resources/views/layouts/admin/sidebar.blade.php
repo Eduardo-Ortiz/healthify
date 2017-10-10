@@ -20,7 +20,7 @@
                 <a href="#"><i class="fa fa-user fa-fw"></i> Pacientes<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{url('admin/admins')}}">Explorar</a>
+                        <a href="{{url('admin/patients')}}">Explorar</a>
                     </li>
                     <li>
                         <a href="{{url('admin/admins/create')}}">Registrar</a>
@@ -56,12 +56,15 @@
                     <li>
                         <a href="{{url('admin/medicines/presentations')}}">Presentaciones</a>
                     </li>
+                    <li>
+                        <a href="{{url('admin/medicines/registry')}}">Registro</a>
+                    </li>
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
 
             <li>
-                <a href="{{url('admin')}}"><i class="fa fa-clock-o fa-fw"></i> Historial</a>
+                <a href="{{url('admin/report')}}"><i class="fa fa-file-text fa-fw"></i> Reporte</a>
             </li>
 
 

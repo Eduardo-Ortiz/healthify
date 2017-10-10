@@ -78,6 +78,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ route('patient') }}">Inicio</a></li>
                 <li><a href="#"><strong>Paciente: {{ Auth::user()->name }}</strong></a></li>
                 <li>
                     <a href="{{ route('logout') }}"
@@ -100,41 +101,35 @@
 
     <div class="panel panel-default" style="width: 800px">
         <div class="panel-body" style="text-align: center">
-            <h1>Seleccione una acción</h1>
+            <h1>Historial de Citas</h1>
             <hr>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="well" style="text-align: center">
-                    <h4>Nueva Cita</h4>
-                    <a href="{{route('patient.appointment.create')}}" type="submit" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> Crear</a>
-                </div>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="well" style="text-align: center">
-                    <h4>Citas Pendientes</h4>
-                    <a href="{{route('patient.appointment.get')}}" type="submit" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> Ver</a>
-                </div>
-            </div>
+            @if(count($appointments))
+                <table style="text-align: left" class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th># de Cita</th>
+                        <th>Hora</th>
+                        <th>Fecha</th>
+                        <th>Doctor</th>
+                        <th>Costo</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($appointments as $appointment)
+                        <tr>
+                            <td>{{$appointment->id}}</td>
+                            <td>{{$appointment->getTextHour()}}</td>
+                            <td>{{$appointment->appointment_date}}</td>
+                            <td>{{$appointment->getDoctor->doctor->nombre}} {{$appointment->getDoctor->doctor->apellido_paterno}} {{$appointment->getDoctor->doctor->apellido_materno}}</td>
+                            <td>${{$appointment->getDoctor->doctor->costo}}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @else
+                <h4>No hay citas programadas</h4>
+            @endif
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="well" style="text-align: center">
-                    <h4>Historial de Citas</h4>
-                    <a href="{{route('patient.appointment.history')}}" type="submit" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> Ver</a>
-                </div>
-            </div>
-
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="well" style="text-align: center">
-                    <h4>Recetas</h4>
-                    <a href="{{route('patient.recipes.index')}}" type="submit" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> Ver</a>
-                </div>
-            </div>
-
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="well" style="text-align: center">
-                    <h4>Historial Peso/Altura</h4>
-                    <a href="{{route('patient.data')}}" type="submit" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> Ver</a>
-                </div>
-            </div>
 
         </div>
     </div>

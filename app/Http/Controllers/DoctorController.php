@@ -189,7 +189,12 @@ class DoctorController extends Controller
             ->where('status','=',0)
             ->first();
 
-        return view('doctors.index',compact('appointment'));
+        $nextAppointment = Appointment::where('appointment_date','=',$date)
+            ->where('doctor','=',Auth::user()->id)
+            ->where('hour','>',$currentHour)
+            ->where('status','=',0)->get();
+
+        return view('doctors.index',compact('appointment','nextAppointment'));
     }
 
 
@@ -227,7 +232,7 @@ class DoctorController extends Controller
             return 10;
         }
         else {
-            return 0;
+            return 11;
         }
 
     }

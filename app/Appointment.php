@@ -41,4 +41,10 @@ class Appointment extends Model
     public function patient(){
         return $this->hasOne('App\User','id','expedient');
     }
+
+    public function recipes()
+    {
+        return $this->hasMany('App\Recipe');
+    }
+
 }

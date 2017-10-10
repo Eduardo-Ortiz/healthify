@@ -78,6 +78,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ route('patient') }}">Inicio</a></li>
                 <li><a href="#"><strong>Paciente: {{ Auth::user()->name }}</strong></a></li>
                 <li>
                     <a href="{{ route('logout') }}"
@@ -98,43 +99,49 @@
 
 <div class="flex-center position-ref full-height" >
 
-    <div class="panel panel-default" style="width: 800px">
-        <div class="panel-body" style="text-align: center">
-            <h1>Seleccione una acción</h1>
+    <div class="panel panel-default" style="width: 800px;margin-top: 100px">
+        <div class="panel-body">
+            <div style="text-align: center">
+                <h1>Recetas</h1>
+            </div>
+
             <hr>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="well" style="text-align: center">
-                    <h4>Nueva Cita</h4>
-                    <a href="{{route('patient.appointment.create')}}" type="submit" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> Crear</a>
-                </div>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="well" style="text-align: center">
-                    <h4>Citas Pendientes</h4>
-                    <a href="{{route('patient.appointment.get')}}" type="submit" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> Ver</a>
-                </div>
-            </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="well" style="text-align: center">
-                    <h4>Historial de Citas</h4>
-                    <a href="{{route('patient.appointment.history')}}" type="submit" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> Ver</a>
-                </div>
-            </div>
+            @if(count($appointments))
+                @foreach($appointments as $appointment)
+                    <li class="list-group-item">
+                        <strong>Fecha : </strong>{{$appointment->appointment_date}}    <strong> Cita : </strong>{{$appointment->id}}  <br>
+                        <hr>
+                        <table style="text-align: left" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Medicamento</th>
+                                <th>Cantidad</th>
+                                <th>Observaciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($appointment->recipes as $recipe)
+                                <tr>
+                                    <td>{{$recipe->medicine->name}}</td>
+                                    <td>{{$recipe->quantity}}</td>
+                                    <td>{{$recipe->observations}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="well" style="text-align: center">
-                    <h4>Recetas</h4>
-                    <a href="{{route('patient.recipes.index')}}" type="submit" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> Ver</a>
-                </div>
-            </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="well" style="text-align: center">
-                    <h4>Historial Peso/Altura</h4>
-                    <a href="{{route('patient.data')}}" type="submit" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> Ver</a>
-                </div>
-            </div>
+                    </li>
+
+
+                @endforeach
+            @else
+                <h4>No hay recetas disponibles</h4>
+            @endif
+
+
+
 
         </div>
     </div>
