@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header"><strong>Pacientes</strong></h1>
+            <h1 class="page-header"><strong>Pacientes con Menos citas</strong></h1>
 
             @if(session()->has('status'))
                 <div class="alert alert-success fade in alert-dismissable">

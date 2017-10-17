@@ -218,4 +218,13 @@ class MedicineController extends Controller
 
         return view('admin.medicines.registry',compact('recipes'));
     }
+
+
+    public function purposeMedicines(Purposes $purpose)
+    {
+        $medicines = Medicine::where('purpose_id','=',$purpose->id)->get();
+
+
+        return view('admin.medicines.purposes',compact('medicines','purpose'));
+    }
 }

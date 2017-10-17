@@ -5,7 +5,7 @@
                 <a href="{{url('admin')}}"><i class="fa fa-dashboard fa-fw"></i> Principal</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-user-md fa-fw"></i> Medicos<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-user-md fa-fw"></i> Doctores<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{url('admin/doctors')}}">Explorar</a>
@@ -23,12 +23,15 @@
                         <a href="{{url('admin/patients')}}">Explorar</a>
                     </li>
                     <li>
+                        <a href="{{url('admin/patients/less')}}">Con Menos Consultas</a>
+                    </li>
+                    <li style="display: none">
                         <a href="{{url('admin/admins/create')}}">Registrar</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-            <li>
+            <li style="display: none">
                 <a href="#"><i class="fa fa-calendar-o fa-fw"></i> Citas<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
@@ -63,9 +66,7 @@
                 <!-- /.nav-second-level -->
             </li>
 
-            <li>
-                <a href="{{url('admin/report')}}"><i class="fa fa-file-text fa-fw"></i> Reporte</a>
-            </li>
+
 
 
         </ul>

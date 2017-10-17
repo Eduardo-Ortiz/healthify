@@ -23,7 +23,9 @@
                         <th>N°</th>
                         <th>Nombre</th>
                         <th>Especialidad</th>
+                        <th>Ingresos (Mes)</th>
                         <th>Editar</th>
+                        <th>Consultas</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -32,7 +34,9 @@
                             <td>{{$doctor->doctor->id}}</td>
                             <td>{{$doctor->doctor->nombre}} {{$doctor->doctor->apellido_paterno}} {{$doctor->doctor->apellido_materno}}</td>
                             <td>{{$doctor->doctor->speciality->nombre}}</td>
+                            <td>${{$doctor->doctor->mensualIncome()}}</td>
                             <td style="width: 1px"><a href="{{route('admin.doctors.edit', $doctor->id)}}" class="btn btn-default btn-xs">Seleccionar</a></td>
+                            <td style="width: 1px"><a href="{{route('admin.appointments.doctor', $doctor->doctor->id)}}" class="btn btn-default btn-xs">Seleccionar</a></td>
                         </tr>
                     @endforeach
                     </tbody>

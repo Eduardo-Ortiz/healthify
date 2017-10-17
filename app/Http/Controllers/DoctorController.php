@@ -169,6 +169,7 @@ class DoctorController extends Controller
             ->get();
     }
 
+
     public function showAppointment(Appointment $appointment)
     {
         //
@@ -196,6 +197,20 @@ class DoctorController extends Controller
 
         return view('doctors.index',compact('appointment','nextAppointment'));
     }
+
+
+    public function getAppointments(Doctor $doctor)
+    {
+        //
+
+
+        $appointments=Appointment::where('doctor','=',$doctor->user_id)->get( );
+
+
+        return view('admin.doctors.appointments',compact('appointments','doctor'));
+    }
+
+
 
 
 

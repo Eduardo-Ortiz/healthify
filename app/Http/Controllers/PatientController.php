@@ -156,7 +156,26 @@ class PatientController extends Controller
     public function getList()
     {
         $patients = User::all()->where('role_id','=','3');
+
+
+
+
+
         return view('admin.patients.index',compact('patients'));
+    }
+
+    public function getLessAppointments()
+    {
+
+        $patients = User::where('role_id','=','3')->get()->sortBy(function($hackathon)
+        {
+            return $hackathon->patient->appointments()->count();
+        })->take(5);
+
+
+
+
+        return view('admin.patients.list',compact('patients'));
     }
 
 }

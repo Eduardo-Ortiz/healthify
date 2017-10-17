@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
-    return view('admin.index');
-});
+
+
+Route::get('/admin', 'AdminController@panelIndex')->name('admin.index');
 
 Route::get('/patient', function () {
     return view('patient.index');
@@ -32,8 +32,6 @@ Route::get('patient/appointment/create', function () {
 })->name('patient.appointment.create')->middleware('patient');
 
 
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -41,6 +39,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('admin/doctors','DoctorController', [
     'as' => 'admin'
 ]);
+
+Route::get('admin/purposes/{purpose}', 'MedicineController@purposeMedicines')->name('admin.purpose.medicines');
 
 Route::get('admin/medicines/purposes', 'MedicineController@purposesIndex')->name('admin.medicines.purposes');
 
@@ -95,4 +95,8 @@ Route::post('ajax/appointmentfinish', 'AppointmentController@save');
 
 Route::get('admin/patients', 'PatientController@getList')->name('admin.patients.list');
 
-Route::get('admin/report', 'PatientController@getList')->name('admin.patients.list');
+Route::get('admin/patients', 'PatientController@getList')->name('admin.patients.list');
+
+Route::get('admin/patients/less', 'PatientController@getLessAppointments')->name('admin.patients.list.less');
+
+Route::get('admin/appointments/{doctor}', 'DoctorController@getAppointments')->name('admin.appointments.doctor');

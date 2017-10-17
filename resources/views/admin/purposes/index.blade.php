@@ -41,12 +41,14 @@
                     <thead>
                     <tr>
                         <th>Uso</th>
+                        <th>Medicamentos</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($purposes as $purpose)
                         <tr>
                             <td>{{$purpose->name}}</td>
+                                <td style="width: 1px"><a href="{{route('admin.purpose.medicines', $purpose->id)}}" class="btn btn-default btn-xs">Buscar</a></td>
                         </tr>
                     @endforeach
                     </tbody>

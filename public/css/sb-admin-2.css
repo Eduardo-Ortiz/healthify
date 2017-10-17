@@ -170,6 +170,32 @@ body,html {
   border-color: #1EB587;
 }
 
+.panel-purple
+{
+  border-color: #3dc69e !important;
+}
+
+.panel-purple > .panel-heading
+{
+  background-color: #3dc69e !important;
+  border-color: #3dc69e !important;
+  color: white;
+
+}
+
+.panel-red
+{
+  border-color: #FF8A80 !important;
+}
+
+.panel-red > .panel-heading
+{
+  background-color: #FF8A80 !important;
+  border-color: #FF8A80 !important;
+  color: white;
+
+}
+
 .btn-success:hover {
   color: #fff;
   background-color: #1db592;
